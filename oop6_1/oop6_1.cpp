@@ -18,7 +18,7 @@ int main()
 {
 	//double a = 1, b = 6, c = 3, d = -10; // D < 0
 	//double a = 1, b = 12, c = 3, d = 4;
-	double a = 1, b = 12, c = 36, d = 32; // D = 0
+	double a = 2, b = -11, c = 12, d = 9; // D = 0
 	EquationRoots3 result;
 	result.numRoots = 0;
 	result.roots[0] = 0;
