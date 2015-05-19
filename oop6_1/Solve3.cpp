@@ -28,9 +28,9 @@ EquationRoots3 GetResultWhenDLessZero(double a, double b, double p, double q, do
 	y2 = 2 * sqrt(-p / 3) * cos((angle + 2 * M_PI) / 3);
 	y3 = 2 * sqrt(-p / 3) * cos((angle + 4 * M_PI) / 3);
 	result.numRoots = 3;
-	result.roots[0] = y1 - (b / 3 * a);
-	result.roots[1] = y2 - (b / 3 * a);
-	result.roots[2] = y3 - (b / 3 * a);
+	result.roots[0] = y1 - (b / (3 * a));
+	result.roots[1] = y2 - (b / (3 * a));
+	result.roots[2] = y3 - (b / (3 * a));
 	return result;
 }
 EquationRoots3 GetResultWhenDMoreZero(double a, double b, double q, double D)
@@ -39,7 +39,7 @@ EquationRoots3 GetResultWhenDMoreZero(double a, double b, double q, double D)
 	double y1, y2, y3;
 	y1 = cbrt((-q / 2) + sqrt(D)) - cbrt((q / 2) + sqrt(D));
 	result.numRoots = 1;
-	result.roots[0] = y1 - (b / 3 * a);
+	result.roots[0] = y1 - (b / (3 * a));
 	return result;
 }
 
@@ -50,8 +50,8 @@ EquationRoots3 GetResultWhenDEqualZero(double a, double b, double q, double D)
 	y1 = -2 * pow(q / 2, 1.0 / 3.0);
 	y2 = pow(q / 2, 1.0 / 3.0);
 	result.numRoots = 2;
-	result.roots[0] = y1 - (b / 3 * a);
-	result.roots[1] = y2 - (b / 3 * a);
+	result.roots[0] = y1 - (b / (3 * a));
+	result.roots[1] = y2 - (b / (3 * a));
 	return result;
 }
 
@@ -67,7 +67,7 @@ EquationRoots3 Solve3(double a, double b, double c, double d)
 	EquationRoots3 result;
 	double p = ((3 * a * c) - (b * b)) / (3 * a * a);
 	double q = ((2 * b * b * b) - (9 * a * b * c) + (27 * a * a * d)) / (27 * a * a * a);
-	double D = (q / 2) * (q / 2) + (p / 3) * (p / 3) * (p / 3);
+	double D = ((q / 2) * (q / 2)) + ((p / 3) * (p / 3) * (p / 3));
 
 	if (D < 0)
 	{

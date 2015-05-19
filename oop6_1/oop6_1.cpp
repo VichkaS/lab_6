@@ -18,7 +18,7 @@ int main()
 {
 	//double a = 1, b = 6, c = 3, d = -10; // D < 0
 	//double a = 1, b = 12, c = 3, d = 4;
-	double a = 2, b = -11, c = 12, d = 9; // D = 0
+	double a = 0, b = 0, c = 0, d = 0; // D = 0
 	EquationRoots3 result;
 	result.numRoots = 0;
 	result.roots[0] = 0;
@@ -26,7 +26,11 @@ int main()
 	result.roots[2] = 0;
 	try
 	{		
-		//cin >> a >> b >> c >> d;
+		cin >> a >> b >> c >> d;
+		b = b / a;
+		c = c / a;
+		d = d / a;
+		a = a / a;
 		result = Solve3(a, b, c, d);
 		PrintResult(result);
 	}
