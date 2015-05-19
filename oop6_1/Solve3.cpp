@@ -6,18 +6,24 @@
 
 using namespace std;
 
+double GetDiscriminant(double q, double p)
+{
+	return (((q * q) / 4) + ((p * p * p) / 27));
+}
+
 EquationRoots3 GetResultWhenDLessZero(double a, double b, double p, double q, double D)
 {
 	EquationRoots3 result;
-
 	double angle;
 	if (q < 0)
 	{
-		angle = atan(sqrt(-D) / (-q / 2));
+		angle = sqrt(-D) / (-q / 2);
+		angle = atan(angle);
 	}
 	if (q > 0)
 	{
-		angle = atan(sqrt(-D) / (-q / 2)) + M_PI;
+		angle = (sqrt(-D)) / (-q / 2);
+		angle = atan(angle) + M_PI;
 	}
 	if (q == 0)
 	{
@@ -67,18 +73,19 @@ EquationRoots3 Solve3(double a, double b, double c, double d)
 	EquationRoots3 result;
 	double p = ((3 * a * c) - (b * b)) / (3 * a * a);
 	double q = ((2 * b * b * b) - (9 * a * b * c) + (27 * a * a * d)) / (27 * a * a * a);
-	double D = ((q / 2) * (q / 2)) + ((p / 3) * (p / 3) * (p / 3));
-
-	if (D < 0)
+	double di = floor((q * q) / 4) + floor((p * p * p) / 27);
+	double D = ((q * q) / 4) + ((p * p * p) / 27);
+	D = round(D * 10000) / 10000;
+	if (di < 0)
 	{
 		result = GetResultWhenDLessZero(a, b, p, q, D);
 	}
 
-	if (D > 0)
+	if (di > 0)
 	{
 		result = GetResultWhenDMoreZero(a, b, q, D);
 	}
-	if (D == 0)
+	if (di == 0)
 	{
 		result = GetResultWhenDEqualZero(a, b, q, D);
 	}

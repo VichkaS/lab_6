@@ -3,8 +3,8 @@
 
 #include "stdafx.h"
 #include "Solve3.h"
-//#include <stdexcept>
 #include <iostream>
+#include <string>
 using namespace std;
 
 void PrintResult(EquationRoots3 const &result)
@@ -27,12 +27,10 @@ int main()
 	try
 	{		
 		cin >> a >> b >> c >> d;
-		b = b / a;
-		c = c / a;
-		d = d / a;
-		a = a / a;
+		b = b / a; c = c / a; d = d / a; a = a / a;
 		result = Solve3(a, b, c, d);
 		PrintResult(result);
+		
 	}
 	catch (std::invalid_argument const & e) 
 	{
