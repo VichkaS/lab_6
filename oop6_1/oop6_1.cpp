@@ -16,8 +16,6 @@ void PrintResult(EquationRoots3 const &result)
 }
 int main()
 {
-	//double a = 1, b = 6, c = 3, d = -10; // D < 0
-	//double a = 1, b = 12, c = 3, d = 4;
 	double a = 0, b = 0, c = 0, d = 0; // D = 0
 	EquationRoots3 result;
 	result.numRoots = 0;
@@ -27,10 +25,8 @@ int main()
 	try
 	{		
 		cin >> a >> b >> c >> d;
-		b = b / a; c = c / a; d = d / a; a = a / a;
 		result = Solve3(a, b, c, d);
 		PrintResult(result);
-		
 	}
 	catch (std::invalid_argument const & e) 
 	{
