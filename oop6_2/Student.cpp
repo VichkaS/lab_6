@@ -3,9 +3,9 @@
 using namespace std;
 
 
-CStudent::CStudent(string const &name, string const &surname, string const &patronymic, int age)
+CStudent::CStudent(int age, string const &name, string const &surname, string const &patronymic)
 {
-	if (age < 14 && age > 60)
+	if (age <= 14 && age >= 60)
 	{
 		throw out_of_range("Invalid age");
 	}

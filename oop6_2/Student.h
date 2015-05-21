@@ -4,7 +4,7 @@ using namespace std;
 class CStudent
 {
 public:
-	CStudent(string const &name, string const &surname, string const &patronymic, int age);
+	CStudent(int age, string const &name, string const &surname, string const &patronymic = std::string());
 	~CStudent();
 	std::string GetName() const;
 	std::string GetSurname() const;
