@@ -4,7 +4,14 @@
 #include "stdafx.h"
 #include "../oop6_2/Student.h"
 using namespace std;
-BOOST_AUTO_TEST_SUITE(TestsCStudent)
+
+struct SphereFixture
+{
+	CStudent student = CStudent(16, "Petr", "Petrov");
+};
+
+
+BOOST_FIXTURE_TEST_SUITE(Sphere, SphereFixture)
 
 BOOST_AUTO_TEST_CASE(InvalidFIO)
 {
@@ -31,6 +38,15 @@ BOOST_AUTO_TEST_CASE(GetNameStudent)
 	BOOST_CHECK_EQUAL(student.GetSurname, "Petrov");
 	BOOST_CHECK_EQUAL(student.GetPatronymic, "Petrovich");
 	BOOST_CHECK_EQUAL(student.GetAge, 21);
+}
+
+BOOST_AUTO_TEST_CASE(RenameStudent)
+{
+	CStudent student = CStudent(21, "Petr", "Petrov", "Petrovich");
+	student.Rename("Ivan", "Ivanov", "Ivanovich");
+	BOOST_CHECK_EQUAL(student.GetName, "Ivan");
+	BOOST_CHECK_EQUAL(student.GetSurname, "Ivanov");
+	BOOST_CHECK_EQUAL(student.GetPatronymic, "Ivanovich");
 }
 
 
