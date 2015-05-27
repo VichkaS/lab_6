@@ -5,13 +5,13 @@
 #include "../oop6_2/Student.h"
 using namespace std;
 
-struct SphereFixture
+struct StudentFixture
 {
 	CStudent student = CStudent(16, "Petr", "Petrov");
 };
 
 
-BOOST_FIXTURE_TEST_SUITE(Sphere, SphereFixture)
+BOOST_FIXTURE_TEST_SUITE(Student, StudentFixture)
 
 BOOST_AUTO_TEST_CASE(InvalidFIO)
 {
@@ -34,21 +34,20 @@ BOOST_AUTO_TEST_CASE(InvalidAge)
 BOOST_AUTO_TEST_CASE(GetNameStudent)
 {
 	CStudent student = CStudent(21, "Petr", "Petrov", "Petrovich");
-	BOOST_CHECK_EQUAL(student.GetName, "Petr");
-	BOOST_CHECK_EQUAL(student.GetSurname, "Petrov");
-	BOOST_CHECK_EQUAL(student.GetPatronymic, "Petrovich");
-	BOOST_CHECK_EQUAL(student.GetAge, 21);
+	BOOST_CHECK_EQUAL(student.GetName(), "Petr");
+	BOOST_CHECK_EQUAL(student.GetSurname(), "Petrov");
+	BOOST_CHECK_EQUAL(student.GetPatronymic(), "Petrovich");
+	BOOST_CHECK_EQUAL(student.GetAge(), 21);
 }
 
 BOOST_AUTO_TEST_CASE(RenameStudent)
 {
 	CStudent student = CStudent(21, "Petr", "Petrov", "Petrovich");
 	student.Rename("Ivan", "Ivanov", "Ivanovich");
-	BOOST_CHECK_EQUAL(student.GetName, "Ivan");
-	BOOST_CHECK_EQUAL(student.GetSurname, "Ivanov");
-	BOOST_CHECK_EQUAL(student.GetPatronymic, "Ivanovich");
+	BOOST_CHECK_EQUAL(student.GetName(), "Ivan");
+	BOOST_CHECK_EQUAL(student.GetSurname(), "Ivanov");
+	BOOST_CHECK_EQUAL(student.GetPatronymic(), "Ivanovich");
 }
-
 
 
 BOOST_AUTO_TEST_SUITE_END()
