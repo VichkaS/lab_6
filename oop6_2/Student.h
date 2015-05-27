@@ -10,13 +10,11 @@ public:
 	std::string GetSurname() const;
 	std::string GetPatronymic() const;
 	int GetAge() const;
-	void Rename(std::string const&name, std::string const& surname, std::string const& patronymic = std::string());
+	void Rename(std::string name, std::string surname, std::string patronymic = std::string());
 	void SetAge(int age);
 	
 private:
-
-	void CheckCorrectName(string name, string surname, string patronymic);
-	bool CheckStringOnSpases(string const& name);
+	static bool CheckStringOnSpases(string const& name);
 	string m_name;
 	string m_surname;
 	string m_patronymic;

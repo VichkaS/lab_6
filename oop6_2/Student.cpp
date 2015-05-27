@@ -5,22 +5,15 @@ using namespace std;
 
 CStudent::CStudent(int age, string const &name, string const &surname, string const &patronymic)
 {
-	if (age <= 14 && age >= 60)
-	{
-		throw out_of_range("Invalid age");
-	}
-	m_age = move(age);
-	CheckCorrectName(name, surname, patronymic);
+	SetAge(0);
+	Rename(name, surname, patronymic);
 }
 
 bool CStudent::CheckStringOnSpases(string const& name)
 {
-	for (size_t i = 0; i < name.size(); i++)
+	if (name.find_first_of(" ") != std::string::npos)
 	{
-		if (name[i] == ' ')
-		{
-			return false;
-		}
+		return false;
 	}
 	return true;
 }
@@ -45,25 +38,7 @@ int CStudent::GetAge() const
 	return m_age;
 }
 
-void CStudent::Rename(std::string const&name, std::string const& surname, std::string const& patronymic)
-{
-	CheckCorrectName(name, surname, patronymic);
-}
-
-void CStudent::SetAge(int age)
-{
-	if (age < 14 && age > 60)
-	{
-		throw out_of_range("Invalid age");
-	}
-	if (age < m_age)
-	{
-		throw domain_error("Invalid age");
-	}
-	m_age = move(age);
-}
-
-void CStudent::CheckCorrectName(string name, string surname, string patronymic)
+void CStudent::Rename(std::string name, std::string surname, std::string patronymic)
 {
 	if (name.empty() && CheckStringOnSpases(name))
 	{
@@ -81,6 +56,19 @@ void CStudent::CheckCorrectName(string name, string surname, string patronymic)
 	m_name = move(name);
 	m_surname = move(surname);
 	m_patronymic = move(patronymic);
+}
+
+void CStudent::SetAge(int age)
+{
+	if (age < 14 && age > 60)
+	{
+		throw out_of_range("Invalid age");
+	}
+	if (age < m_age)
+	{
+		throw domain_error("Invalid age");
+	}
+	m_age = age;
 }
 
 CStudent::~CStudent()
