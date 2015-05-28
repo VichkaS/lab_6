@@ -14,10 +14,10 @@ public:
 	void SetAge(int age);
 	
 private:
-	static bool CheckStringOnSpases(string const& name);
+	static const bool CheckStringOnSpases(string const& name);
 	string m_name;
 	string m_surname;
 	string m_patronymic;
-	int m_age;
+	int m_age = 0;
 };
 

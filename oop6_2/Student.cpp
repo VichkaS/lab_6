@@ -5,17 +5,13 @@ using namespace std;
 
 CStudent::CStudent(int age, string const &name, string const &surname, string const &patronymic)
 {
-	SetAge(0);
+	SetAge(age);
 	Rename(name, surname, patronymic);
 }
 
-bool CStudent::CheckStringOnSpases(string const& name)
+const bool CStudent::CheckStringOnSpases(string const& name) 
 {
-	if (name.find_first_of(" ") != std::string::npos)
-	{
-		return false;
-	}
-	return true;
+	return (name.find_first_of(" ") != std::string::npos);
 }
 
 string CStudent::GetName() const
@@ -40,11 +36,11 @@ int CStudent::GetAge() const
 
 void CStudent::Rename(std::string name, std::string surname, std::string patronymic)
 {
-	if (name.empty() && CheckStringOnSpases(name))
+	if (name.empty() || CheckStringOnSpases(name))
 	{
 		throw invalid_argument("Invalid name");
 	}
-	if (surname.empty() && CheckStringOnSpases(surname))
+	if (surname.empty() || CheckStringOnSpases(surname))
 	{
 		throw invalid_argument("Invalid surname");
 	}
@@ -60,7 +56,7 @@ void CStudent::Rename(std::string name, std::string surname, std::string patrony
 
 void CStudent::SetAge(int age)
 {
-	if (age < 14 && age > 60)
+	if (age < 14 || age > 60)
 	{
 		throw out_of_range("Invalid age");
 	}
